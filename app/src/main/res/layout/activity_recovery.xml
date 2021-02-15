@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RecoveryActivity"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/background_image">
+
+    <LinearLayout
+        android:layout_width="900px"
+        android:layout_height="1400px"
+        android:orientation="vertical"
+        android:background="@drawable/square_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100px"
+                android:text="Recuperar contraseña"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="100px" />
+
+            <EditText
+                android:id="@+id/editTextTextEmailAddress"
+                android:layout_width="700px"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="200px"
+                android:backgroundTint="@color/orange_primary"
+                android:ems="10"
+                android:hint="Nombre de usuario"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="100px"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button_recovery"
+                android:layout_width="500px"
+                android:layout_height="wrap_content"
+                android:text="Recuperar contraseña"
+                android:drawableRight="@drawable/ic_baseline_arrow_forward_ios_24"
+                android:drawableTint="@color/white"
+                android:background="@drawable/rounded_button"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

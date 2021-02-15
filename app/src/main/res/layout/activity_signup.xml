@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignupActivity"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/background_image">
+
+    <LinearLayout
+        android:layout_width="900px"
+        android:layout_height="1400px"
+        android:orientation="vertical"
+        android:background="@drawable/square_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Registro"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:textSize="100px"
+                android:layout_marginTop="100px"/>
+
+            <EditText
+                android:id="@+id/editTextTextPersonName3"
+                android:layout_width="700px"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Nombre(s)"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/orange_primary"
+                android:layout_marginTop="100px"/>
+
+            <EditText
+                android:id="@+id/editTextTextPersonName4"
+                android:layout_width="700px"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Apellidos"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/orange_primary"
+                android:layout_marginTop="50px"/>
+
+            <EditText
+                android:id="@+id/editTextTextEmailAddress2"
+                android:layout_width="700px"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:hint="Nombre de usuario"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/orange_primary"
+                android:layout_marginTop="50px"/>
+
+            <EditText
+                android:id="@+id/editTextTextPassword2"
+                android:layout_width="700px"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:hint="Contraseña"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/orange_primary"
+                android:layout_marginTop="50px"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_margin="100px">
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="500px"
+                android:layout_height="wrap_content"
+                android:text="Registrarse"
+                android:drawableRight="@drawable/ic_baseline_arrow_forward_ios_24"
+                android:drawableTint="@color/white"
+                android:background="@drawable/rounded_button"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
