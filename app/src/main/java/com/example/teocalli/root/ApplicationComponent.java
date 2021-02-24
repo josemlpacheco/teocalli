@@ -1,15 +1,14 @@
 package com.example.teocalli.root;
 
-import android.app.Application;
-
 import com.example.teocalli.login.LoginActivity;
+import com.example.teocalli.login.LoginModule;
 
 import javax.inject.Singleton;
 
 import dagger.Component;
 
 @Singleton
-@Component(modules = {ApplicationModule.class})
+@Component(modules = {ApplicationModule.class, LoginModule.class})
 public interface ApplicationComponent {
     void inject(LoginActivity target);
 }
