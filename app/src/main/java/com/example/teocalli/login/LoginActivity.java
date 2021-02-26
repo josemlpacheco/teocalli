@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.teocalli.R;
-import com.example.teocalli.RecoveryActivity;
 import com.example.teocalli.SignupActivity;
+import com.example.teocalli.recoveryPassword.RecoveryActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -22,8 +22,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        signupButton = findViewById(R.id.button_signup);
-        recoveryLink = findViewById(R.id.link_recovery);
+        signupButton = findViewById(R.id.btn_signup);
+        recoveryLink = findViewById(R.id.label_recovery);
 
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
