@@ -1,11 +1,18 @@
 package com.example.teocalli.shared.entities;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class User {
 
+    @SerializedName("username")
+    @Expose
     private String userName;
     private String user;
     private String fatherUserName;
     private String motherUserName;
+    @SerializedName("password")
+    @Expose
     private String password;
     private int userRoleID;
 
