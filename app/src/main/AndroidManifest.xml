@@ -10,7 +10,7 @@
         android:name=".root.App"
         android:supportsRtl="true"
         android:theme="@style/Theme.Teocalli">
-        <activity android:name=".RecoveryActivity"></activity>
+        <activity android:name=".recoveryPassword.RecoveryActivity"></activity>
         <activity android:name=".SignupActivity" />
         <activity android:name=".login.LoginActivity">
             <intent-filter>
