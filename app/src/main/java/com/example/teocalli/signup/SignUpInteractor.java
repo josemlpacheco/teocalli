@@ -10,8 +10,8 @@ import com.example.teocalli.shared.entities.User;
 public class SignUpInteractor implements SignupMVP.Interactor {
     private SignUpRepository repository;
 
-    public SignUpInteractor(SignUpRepository repository) {
-        this.repository = repository;
+    public SignUpInteractor(SignupMVP.Presenter presenter) {
+        this.repository = new ApiSignUpRepository(presenter);
     }
 
     @Override
