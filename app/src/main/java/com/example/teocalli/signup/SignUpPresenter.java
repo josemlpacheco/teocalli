@@ -12,13 +12,17 @@ public class SignUpPresenter implements SignupMVP.Presenter {
     private SignupMVP.View view;
 
 
+    public SignUpPresenter(SignupMVP.Interactor interactor) {
+        this.interactor = interactor;
+    }
+
     /**
      * Procesa la petición de registro proveniente de la view
      * @param user objeto de tipo User para realizar el registro en la API.
      */
     @Override
     public void signUp(User user) {
-
+        this.interactor.signUp(user);
     }
 
     /**
