@@ -19,20 +19,18 @@ import java.util.regex.Pattern;
 import javax.inject.Inject;
 
 public class SignupActivity extends AppCompatActivity implements SignupMVP.View {
-    @Inject
     private SignupMVP.Presenter presenter;
-    EditText edtName;
-    EditText edtLastName;
-    EditText edtEmail;
-    EditText edtPassword;
-    Button btnSignUp;
+    private EditText edtName;
+    private EditText edtLastName;
+    private EditText edtEmail;
+    private EditText edtPassword;
+    private Button btnSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-
-        ((App) getApplication()).getComponent().inject(this);
+        presenter = new SignUpPresenter(this);
         edtName = findViewById(R.id.edtName);
         edtLastName = findViewById(R.id.edtLastName);
         edtEmail = findViewById(R.id.edtEmail);
@@ -56,12 +54,6 @@ public class SignupActivity extends AppCompatActivity implements SignupMVP.View 
                 }
             }
         });
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
     }
 
     @Override
