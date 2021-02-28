@@ -22,11 +22,16 @@ public class SignUpPresenter implements SignupMVP.Presenter {
     }
 
     /**
-     *
+     * Muestra un mensaje de resultado en la vista.
      * @param message Mensaje de respuesta de la petición de registro.
      */
     @Override
     public void showResult(String message) {
         this.view.showResult(message);
+    }
+
+    @Override
+    public void setView(SignupMVP.View view) {
+        this.view = view;
     }
 }

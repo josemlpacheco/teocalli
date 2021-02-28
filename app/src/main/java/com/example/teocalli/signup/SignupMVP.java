@@ -16,6 +16,7 @@ public interface SignupMVP {
     interface Presenter {
         void signUp(User user);
         void showResult(String message);
+        void setView(SignupMVP.View view);
     }
 
     interface View {

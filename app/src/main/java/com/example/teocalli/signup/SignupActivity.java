@@ -9,15 +9,18 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.teocalli.R;
+import com.example.teocalli.root.App;
 import com.example.teocalli.shared.entities.User;
 
 import java.nio.file.attribute.UserPrincipal;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class SignupActivity extends AppCompatActivity implements SignupMVP.View {
+import javax.inject.Inject;
 
-    SignupMVP.Presenter presenter;
+public class SignupActivity extends AppCompatActivity implements SignupMVP.View {
+    @Inject
+    private SignupMVP.Presenter presenter;
     EditText edtName;
     EditText edtLastName;
     EditText edtEmail;
@@ -28,6 +31,8 @@ public class SignupActivity extends AppCompatActivity implements SignupMVP.View 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        ((App) getApplication()).getComponent().inject(this);
         edtName = findViewById(R.id.edtName);
         edtLastName = findViewById(R.id.edtLastName);
         edtEmail = findViewById(R.id.edtEmail);
@@ -51,6 +56,12 @@ public class SignupActivity extends AppCompatActivity implements SignupMVP.View 
                 }
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
     }
 
     @Override

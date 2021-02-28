@@ -1,4 +1,8 @@
 package com.example.teocalli.signup;
 
-public interface SignUpModule {
+import dagger.Module;
+
+@Module
+public class SignUpModule {
+
 }
