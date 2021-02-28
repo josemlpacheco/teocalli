@@ -21,21 +21,29 @@ public class ApiSignUpRepository implements SignUpRepository {
 
     @Inject
     private RetrofitService<TeocalliAPI> service;
+    private SignupMVP.Presenter presenter;
+
+    public ApiSignUpRepository(SignupMVP.Presenter presenter) {
+        this.presenter = presenter;
+    }
 
     @Override
     public void signupUser(User user) {
         service.provideApiService(TeocalliAPI.class).signUpUser(user).enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
-                if (response.isSuccessful()) {
-
-                }
+                Log.println(Log.INFO, "response", response.toString());
             }
 
             @Override
             public void onFailure(Call<ApiResponse> call, Throwable t) {
-
+                Log.println(Log.ERROR, "response", t.getMessage());
             }
         });
+    }
+
+    @Override
+    public void setPresenter(SignupMVP.Presenter presenter) {
+        this.presenter = presenter;
     }
 }
