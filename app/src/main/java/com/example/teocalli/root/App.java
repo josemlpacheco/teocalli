@@ -15,7 +15,6 @@ public class App extends Application {
 
         component =DaggerApplicationComponent.builder()
                 .loginModule(new LoginModule())
-                .signUpModule(new SignUpModule())
                 .retrofitService(new RetrofitService())
                 .applicationModule(new ApplicationModule(this)).build();
     }
