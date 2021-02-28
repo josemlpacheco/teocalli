@@ -21,12 +21,12 @@ import retrofit2.Response;
  */
 public class ApiSignUpRepository implements SignUpRepository {
 
-    @Inject
-    protected RetrofitService<TeocalliAPI> service;
+    private RetrofitService<TeocalliAPI> service;
     private SignupMVP.Presenter presenter;
 
     public ApiSignUpRepository(SignupMVP.Presenter presenter) {
         this.presenter = presenter;
+        this.service = new RetrofitService<>();
     }
 
     @Override

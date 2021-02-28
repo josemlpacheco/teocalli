@@ -4,7 +4,6 @@ import android.app.Application;
 
 import com.example.teocalli.login.LoginModule;
 import com.example.teocalli.shared.retrofit.RetrofitService;
-import com.example.teocalli.signup.SignUpModule;
 
 public class App extends Application {
     private ApplicationComponent component;
@@ -15,7 +14,6 @@ public class App extends Application {
 
         component =DaggerApplicationComponent.builder()
                 .loginModule(new LoginModule())
-                .retrofitService(new RetrofitService())
                 .applicationModule(new ApplicationModule(this)).build();
     }
 
