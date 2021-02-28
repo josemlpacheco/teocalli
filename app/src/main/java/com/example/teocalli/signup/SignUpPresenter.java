@@ -8,12 +8,12 @@ import com.example.teocalli.shared.entities.User;
  * @version 1.0.0
  */
 public class SignUpPresenter implements SignupMVP.Presenter {
-    private SignupMVP.Interactor interactor;
     private SignupMVP.View view;
+    private SignupMVP.Interactor interactor;
 
-
-    public SignUpPresenter(SignupMVP.Interactor interactor) {
-        this.interactor = interactor;
+    public SignUpPresenter(SignupMVP.View view) {
+        this.view = view;
+        this.interactor = new SignUpInteractor(this);
     }
 
     /**
@@ -34,8 +34,4 @@ public class SignUpPresenter implements SignupMVP.Presenter {
         this.view.showResult(message);
     }
 
-    @Override
-    public void setView(SignupMVP.View view) {
-        this.view = view;
-    }
 }

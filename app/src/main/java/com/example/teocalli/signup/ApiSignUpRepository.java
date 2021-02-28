@@ -6,6 +6,8 @@ import com.example.teocalli.shared.entities.ApiResponse;
 import com.example.teocalli.shared.entities.User;
 import com.example.teocalli.shared.retrofit.RetrofitService;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.inject.Inject;
 
 import retrofit2.Call;
@@ -20,7 +22,7 @@ import retrofit2.Response;
 public class ApiSignUpRepository implements SignUpRepository {
 
     @Inject
-    private RetrofitService<TeocalliAPI> service;
+    protected RetrofitService<TeocalliAPI> service;
     private SignupMVP.Presenter presenter;
 
     public ApiSignUpRepository(SignupMVP.Presenter presenter) {
@@ -31,12 +33,12 @@ public class ApiSignUpRepository implements SignUpRepository {
     public void signupUser(User user) {
         service.provideApiService(TeocalliAPI.class).signUpUser(user).enqueue(new Callback<ApiResponse>() {
             @Override
-            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+            public void onResponse(@NotNull Call<ApiResponse> call, @NotNull Response<ApiResponse> response) {
                 Log.println(Log.INFO, "response", response.toString());
             }
 
             @Override
-            public void onFailure(Call<ApiResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<ApiResponse> call, @NotNull Throwable t) {
                 Log.println(Log.ERROR, "response", t.getMessage());
             }
         });
