@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.teocalli.R;
-import com.example.teocalli.SignupActivity;
+import com.example.teocalli.signup.SignupActivity;
 import com.example.teocalli.recoveryPassword.RecoveryActivity;
 
 public class LoginActivity extends AppCompatActivity {

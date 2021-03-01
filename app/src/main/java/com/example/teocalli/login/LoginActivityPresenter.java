@@ -8,6 +8,7 @@ public class LoginActivityPresenter implements LoginActivityMVP.Presenter{
 
     @Nullable
     private LoginActivityMVP.View view;
+
     private  LoginActivityMVP.Model model;
 
     public LoginActivityPresenter(LoginActivityMVP.Model model) {
