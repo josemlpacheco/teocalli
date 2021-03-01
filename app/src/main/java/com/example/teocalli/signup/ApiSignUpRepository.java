@@ -2,11 +2,16 @@ package com.example.teocalli.signup;
 
 import android.util.Log;
 
+import com.example.teocalli.login.LoginActivity;
 import com.example.teocalli.shared.entities.ApiResponse;
 import com.example.teocalli.shared.entities.User;
 import com.example.teocalli.shared.retrofit.RetrofitService;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 import javax.inject.Inject;
 
@@ -33,13 +38,23 @@ public class ApiSignUpRepository implements SignUpRepository {
     public void signupUser(User user) {
         service.provideApiService(TeocalliAPI.class).signUpUser(user).enqueue(new Callback<ApiResponse>() {
             @Override
-            public void onResponse(@NotNull Call<ApiResponse> call, @NotNull Response<ApiResponse> response) {
-                Log.println(Log.INFO, "response", response.toString());
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                try {
+                    if (response.code() == 201) {
+                        presenter.showResult("Tu cuenta fue creada con éxito, revisa tu correo electrónico");
+                    } else {
+                        String bodyRaw = response.errorBody().string();
+                        bodyRaw = bodyRaw.substring(bodyRaw.lastIndexOf("\"message\":\""), bodyRaw.indexOf("\",\"data\""));
+                        presenter.showResult(bodyRaw);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
-            public void onFailure(@NotNull Call<ApiResponse> call, @NotNull Throwable t) {
-                Log.println(Log.ERROR, "response", t.getMessage());
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+                t.printStackTrace();
             }
         });
     }

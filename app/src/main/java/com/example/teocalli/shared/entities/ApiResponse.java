@@ -1,16 +1,20 @@
 package com.example.teocalli.shared.entities;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ApiResponse {
-    @SerializedName("success")
+public class ApiResponse<T> {
+    @SerializedName(value = "success")
+    @Expose
     private boolean success;
 
-    @SerializedName("message")
+    @SerializedName(value = "message")
+    @Expose
     private String message;
 
-    @SerializedName("data")
-    private Object data;
+    @SerializedName(value = "data")
+    @Expose
+    private T data;
 
     public boolean isSuccess() {
         return success;
@@ -28,11 +32,13 @@ public class ApiResponse {
         this.message = message;
     }
 
-    public Object getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(T data) {
         this.data = data;
     }
+
+
 }

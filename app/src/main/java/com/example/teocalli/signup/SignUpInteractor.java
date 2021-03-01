@@ -7,7 +7,7 @@ import com.example.teocalli.shared.entities.User;
  * @author GerardCod
  * @version 1.0.0
  */
-public class SignUpInteractor implements SignupMVP.Interactor {
+public class SignUpInteractor implements SignupMVP.Interactor{
     private SignUpRepository repository;
 
     public SignUpInteractor(SignupMVP.Presenter presenter) {

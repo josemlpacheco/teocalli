@@ -9,4 +9,5 @@
     <string name="insert_password">La contraseña es requerida</string>
     <string name="insert_valid_password">Tu contraseña debe ser de al menos 8 caracteres y debe contener al menos una letra mayúscula, un dígito y un caracter especial</string>
     <string name="insert_two_surnames">Debes ingresar dos apellidos</string>
+    <string name="error_alert_title">Resultado</string>
 </resources>

@@ -10,7 +10,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitService<T> {
-    private final String BASE_URL = "https://afternoon-reaches-14063.herokuapp.com/api/v1";
+    private final String BASE_URL = "https://afternoon-reaches-14063.herokuapp.com";
 
     public T provideApiService(Class<T> type) {
         return provideRetrofit(BASE_URL, provideHttpClient()).create(type);

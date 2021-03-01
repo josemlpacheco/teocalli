@@ -1,5 +1,6 @@
 package com.example.teocalli.signup;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -63,37 +64,44 @@ public class SignupActivity extends AppCompatActivity implements SignupMVP.View 
 
     @Override
     public void showResult(String message) {
-
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message)
+            .setTitle(R.string.error_alert_title).create().show();
     }
 
     private boolean isFormValid() {
         SignUpValidation validator = new SignUpValidation();
-        String[] lastName = edtEmail.getText().toString().split(" ");
+        String[] lastName = edtLastName.getText().toString().split(" ");
         if (TextUtils.isEmpty(edtName.getText())){
             validator.setName(false);
             edtName.setError(getString(R.string.insert_name));
         } else if (TextUtils.isEmpty(edtLastName.getText())) {
             validator.setLastName(false);
             edtLastName.setError(getString(R.string.insert_last_name));
+        } else if (lastName.length < 2) {
+            validator.setLastName(false);
+            edtLastName.setError(getString(R.string.insert_two_surnames));
         } else if (TextUtils.isEmpty(edtEmail.getText())) {
             validator.setEmail(false);
             edtEmail.setError(getString(R.string.insert_email));
-        } else if (lastName.length < 2) {
-            validator.setEmail(false);
-            edtEmail.setError(getString(R.string.insert_two_surnames));
         } else if (TextUtils.isEmpty(edtPassword.getText())) {
             validator.setPassword(false);
             edtPassword.setError(getString(R.string.insert_password));
-        } else if (isPasswordValid(edtPassword.getText().toString())) {
+        } else if (!isPasswordValid(edtPassword.getText().toString())) {
             validator.setPassword(false);
             edtPassword.setError(getString(R.string.insert_valid_password));
+        } else {
+            validator.setEmail(true);
+            validator.setName(true);
+            validator.setPassword(true);
+            validator.setLastName(true);
         }
-        validator.setLastName(false);
+
         return validator.isValid();
     }
 
     private boolean isPasswordValid(String password) {
-        String stringPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*(?<=.{8,})$";
+        String stringPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=/()=]).*(?<=.{8,18})$";
         Pattern passwordPattern = Pattern.compile(stringPattern);
         Matcher match = passwordPattern.matcher(password);
         return match.matches();
