@@ -5,7 +5,7 @@ import com.example.teocalli.shared.entities.User;
 public interface LoginActivityMVP {
 
     interface Model {
-        void loginUser(String userName, String password);
+        String loginUser(String userName, String password);
     }
     interface View {
         String getUserName();
@@ -13,7 +13,7 @@ public interface LoginActivityMVP {
 
         void showUserNotAvailable();
         void showInputError();
-        void showUserLoggedIn();
+        void showUserLoggedIn(String message);
     }
     interface Presenter {
         void setView(LoginActivityMVP.View view);

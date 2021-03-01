@@ -26,8 +26,7 @@ public class LoginActivityPresenter implements LoginActivityMVP.Presenter {
             if (view.getUserName().trim().equals("") || view.getPassword().trim().equals("")) {
                 view.showInputError();
             } else {
-                model.loginUser(view.getUserName().trim(),view.getPassword().trim());
-                view.showUserLoggedIn();
+                view.showUserLoggedIn(model.loginUser(view.getUserName().trim(),view.getPassword().trim()));
             }
         }
     }

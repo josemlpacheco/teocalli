@@ -102,7 +102,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
     }
 
     @Override
-    public void showUserLoggedIn() {
-        Toast.makeText(this,"Welcome",Toast.LENGTH_SHORT).show();
+    public void showUserLoggedIn(String message) {
+        Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
 }

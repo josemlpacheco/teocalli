@@ -1,13 +1,8 @@
 package com.example.teocalli.login;
 
 import com.example.teocalli.shared.entities.http.request200.ApiResponse;
-import com.example.teocalli.shared.entities.http.request200.Data;
-import com.example.teocalli.shared.entities.http.request400.Error400;
-import com.example.teocalli.shared.entities.http.request500.Error500;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -15,12 +10,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class BDRepository implements LoginRepository {
-
-    TeocalliAPI teocalliAPI;
-
+    String message = "";
     @Override
-    public void login(String username, String password) {
-        final String[] message = {""};
+    public String login(String username, String password) {
 
         Retrofit retrofit = new Retrofit
                 .Builder()
@@ -35,52 +27,27 @@ public class BDRepository implements LoginRepository {
 
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
-                Gson gson = new GsonBuilder().create();
-                ApiResponse apiResponse = response.body();
-                if (response.isSuccessful()) {
-                    String responseOfAPI = response.body().getMessage();
-                    System.out.println("Result:--- >"+ responseOfAPI);
-                } else {
-                    System.out.println("--------------valio madres-------------------");
-                    String error;
-                    if (response.errorBody()
-                            .contentType()
-                            .subtype()
-                            .equals("application/json")) {
-                        Error400 errorRes = gson.fromJson(gson.toJson(apiResponse.getData()), Error400.class);
-                        System.out.println("weeeeeeeeeey"+errorRes.getFailedField());
-                    } else {
-                        System.out.println("wey 2"+response.message());
-                    }
-                }
-/*                    int codeStatus = response.code();
-                    System.out.println("-------------Error---------------"+ codeStatus);
-                    ApiResponse apiResponse = response.body();
-                    Gson gson = new GsonBuilder().create();
-                    if (response.body() != null) {
-                        if (codeStatus == 201) {
-                            TypeToken<Data> resTypeToken = new TypeToken<Data>() {};
-                            Data data = gson.fromJson(gson.toJson(apiResponse.getData()),resTypeToken.getType());
-                            System.out.println("Ok: ---------------------" + data.getAccessToken());
-                        } else if (codeStatus == 400){
-                            System.out.println("Error ---------------------");
-                            Error400 errorRes = gson.fromJson(gson.toJson(apiResponse.getData()), Error400.class);
-                            System.out.println("Error: ---------------------" + errorRes.getFailedField());
-                        } else if (codeStatus == 500) {
-                            System.out.println("Error ---------------------");
-                            Error500 errorRes = gson.fromJson(gson.toJson(apiResponse.getData()), Error500.class);
-                            System.out.println("Error: ---------------------" + errorRes.getData());
-                        }
-                    } else  {
-                        System.out.println("---------Null------------");
-                    }*/
+                try {
+                    if (response.code() == 201) {
+                        message = "welcome";
 
+                    } else {
+                        String bodyRaw = response.errorBody().string();
+                        bodyRaw = bodyRaw.substring(bodyRaw.lastIndexOf("message"),bodyRaw.indexOf("data"));
+                        System.out.println(bodyRaw);
+                        message = bodyRaw;
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
             @Override
             public void onFailure(Call<ApiResponse> call, Throwable t) {
                 System.out.println("OnFailure-----> " + t.getMessage());
+                message = t.getMessage();
+
             }
         });
-
+        return message;
     }
 }
