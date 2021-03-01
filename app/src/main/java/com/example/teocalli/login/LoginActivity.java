@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.teocalli.R;
-import com.example.teocalli.SignupActivity;
+import com.example.teocalli.signup.SignupActivity;
 import com.example.teocalli.recoveryPassword.RecoveryActivity;
 import com.example.teocalli.root.App;
 
