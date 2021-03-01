@@ -1,7 +1,5 @@
 package com.example.teocalli.login;
 
-import com.example.teocalli.shared.entities.User;
-
 public class LoginActivityModel implements LoginActivityMVP.Model {
 
     private LoginRepository repository;
@@ -11,12 +9,9 @@ public class LoginActivityModel implements LoginActivityMVP.Model {
     }
 
     @Override
-    public void createUser(String userName, String password) {
-        repository.saveUSer(new User(userName,password));
+    public String loginUser(String userName, String password) {
+        return repository.login(userName,password);
     }
 
-    @Override
-    public User getUser() {
-        return repository.getUser();
-    }
+
 }
